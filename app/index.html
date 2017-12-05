@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="gradchatApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="gradchatApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="gradchatApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="gradchatApp" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="apple-touch-icon" href="resource/img/favi/apple-touch-icon.png">-->
+
+    <title>Gradchat Admin Console</title>
+    <!--Application main css-->
+
+    <!--bootstrap cdn. this use for basic form styling-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+
+<style>
+    .online{
+        color: #3c763d;
+    }
+</style>
+
+<body ng-controller="mainController">
+
+<!-- MAIN CONTAINER -->
+<div ng-view="">
+    <!--Dynamic views will be load here base on routes-->
+</div>
+
+<!--bundle js, all angular module-->
+<script type="text/javascript" src="bundle.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDdE3kmAP8hDQMK_CSF_wISN0x6wU_aj3U",
+        authDomain: "angular-chat-app-1c4ce.firebaseapp.com",
+        databaseURL: "https://angular-chat-app-1c4ce.firebaseio.com",
+        projectId: "angular-chat-app-1c4ce",
+        storageBucket: "angular-chat-app-1c4ce.appspot.com",
+        messagingSenderId: "974720494215"
+    };
+    firebase.initializeApp(config);
+</script>
+
+
+</body>
+
+</html>

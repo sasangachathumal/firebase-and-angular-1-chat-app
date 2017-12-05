@@ -1,0 +1,4 @@
+{
+  "BackendUrl": "http://localhost:9000/v2",
+  "BackendType" : "dev_local"
+}

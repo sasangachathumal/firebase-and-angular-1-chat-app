@@ -1,0 +1,4 @@
+{
+  "BackendUrl": "http://dev.api.gradchat.co/v2",
+  "BackendType" : "dev"
+}
