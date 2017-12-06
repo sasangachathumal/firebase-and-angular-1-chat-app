@@ -1,10 +1,28 @@
-<h3>Login View</h3>
 <div>
-    <form ng-submit="login()">
-        Email:<br>
-        <input type="email" ng-model="email"><br>
-        Password:<br>
-        <input type="password" ng-model="password"><br>
-        <input type="submit" value="Login">
-    </form>
+    <button ng-click="changeView('login')">Log in</button>
+    <button ng-click="changeView('signUp')">Sign up</button>
+</div>
+<div ng-show="loginView">
+    <h3>Log in View</h3>
+    <div>
+        <form ng-submit="login()">
+            Email:<br>
+            <input type="email" ng-model="loginEmail"><br>
+            Password:<br>
+            <input type="password" ng-model="loginPassword"><br>
+            <input type="submit" value="Log in">
+        </form>
+    </div>
+</div>
+<div ng-show="signupView">
+    <h3>Sign up View</h3>
+    <div>
+        <form ng-submit="signUp()">
+            Email:<br>
+            <input type="email" ng-model="signUpEmail"><br>
+            Password:<br>
+            <input type="password" ng-model="signUpPassword"><br>
+            <input type="submit" value="Sign up">
+        </form>
+    </div>
 </div>

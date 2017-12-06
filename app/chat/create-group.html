@@ -1,11 +1,12 @@
 <h2>Chat View</h2>
-<button><a href="#!/chat">Normal Chat</a></button>
+<button><a href="#!/group-chat">Group Chat</a></button>
 <button>Log Out</button>
 <div style="float: left; width: 50%; height: 30vh;">
-    <h4>Groups</h4>
+    <h4>Users</h4>
     <ul>
         <li ng-if="checkLoginUser($index)" ng-repeat="user in onlineUsers track by $index">
-            <p ng-class="user.isLogin ? 'online' : ''">{{user.email}}</p>
+            <label ng-class="user.isLogin ? 'online' : ''" for="{{user.uid}}">{{user.email}}</label>
+            <input type="checkbox" id="{{user.uid}}" value="{{$index}}">
         </li>
     </ul>
 </div>
