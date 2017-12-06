@@ -5,7 +5,7 @@
  * Created by vihanga on 5/9/17.
  * this ja control all logger things
  */
-var chatController = function ($scope, $rootScope, firebase, $firebaseArray, $firebaseAuth) {
+var chatController = function ($scope, $rootScope, firebase, $firebaseArray, $window) {
 
     'use strict';
 
@@ -17,7 +17,7 @@ var chatController = function ($scope, $rootScope, firebase, $firebaseArray, $fi
     var selected;
 
     function listUsers() {
-        $scope.onlineUsers = $firebaseArray(firebase.database().ref().child("onlineUsers"));
+        $scope.onlineUsers = $firebaseArray(firebase.database().ref().child("users"));
     }
 
     function listMyChats() {
@@ -161,9 +161,33 @@ var chatController = function ($scope, $rootScope, firebase, $firebaseArray, $fi
     };
 
     $scope.logOut = function () {
-        var auth = $firebaseAuth();
-        auth.logout($scope.loginUser.refreshToken);
-    }
+
+        console.log($scope.loginUser);
+        console.log($scope.loginUser["uid"]);
+
+        firebase.database().ref().child("users").child($scope.loginUser["uid"]).once('value', function (snapshot) {
+            if (snapshot.exists()) {
+                var updates = {};
+                updates['/users/' + $scope.loginUser["uid"] + "/isLogin"] = false;
+                firebase.database().ref().update(updates).then(function (data) {
+                    console.log(data);
+                    alert("add to online node success");
+                    localStorage.clear();
+                    $window.location.href = ('#!/chat-login');
+                }).catch(function (error) {
+                    alert("Authentication failed");
+                    console.log("Authentication failed:", error);
+                });
+            } else {
+                alert("No user found");
+            }
+        });
+
+    };
+
+    $scope.notLogin = function () {
+        console.log("not login");
+    };
 
 };
 module.exports = chatController;

@@ -36,22 +36,39 @@ var chatlogController = function ($scope, $rootScope, firebase, $firebaseAuth, $
         var auth = $firebaseAuth();
         auth.$signInWithEmailAndPassword($scope.loginEmail, $scope.loginPassword).then(function(firebaseUser) {
             alert("sign in success");
-            firebase.database().ref().child("onlineUsers").child(firebaseUser.uid).set({
-                uid: firebaseUser.uid,
-                refreshToken: firebaseUser.refreshToken,
-                isAnonymous: firebaseUser.isAnonymous,
-                emailVerified: firebaseUser.emailVerified,
-                email: firebaseUser.email,
-                project: firebaseUser.v,
-                isLogin: true
-            }).then(function (user) {
-                alert("add to online node success");
-                localStorage.setItem('loginUser', JSON.stringify(firebaseUser));
-                $window.location.href = ('#!/chat');
-            }).catch(function (error) {
-                alert("Authentication failed");
-                console.log("Authentication failed:", error);
+            firebase.database().ref().child("users").child(firebaseUser.uid).once('value', function (snapshot) {
+                if (snapshot.exists()) {
+                    var updates = {};
+                    updates['/users/' + firebaseUser.uid + "/isLogin"] = true;
+                    firebase.database().ref().update(updates).then(function (data) {
+                        console.log(data);
+                        alert("add to online node success");
+                        localStorage.setItem('loginUser', JSON.stringify(firebaseUser));
+                        $window.location.href = ('#!/chat');
+                    }).catch(function (error) {
+                        alert("Authentication failed");
+                        console.log("Authentication failed:", error);
+                    });
+                } else {
+                    alert("No user found");
+                }
             });
+            // firebase.database().ref().child("onlineUsers").child(firebaseUser.uid).set({
+            //     uid: firebaseUser.uid,
+            //     refreshToken: firebaseUser.refreshToken,
+            //     isAnonymous: firebaseUser.isAnonymous,
+            //     emailVerified: firebaseUser.emailVerified,
+            //     email: firebaseUser.email,
+            //     project: firebaseUser.v,
+            //     isLogin: true
+            // }).then(function (user) {
+            //     alert("add to online node success");
+            //     localStorage.setItem('loginUser', JSON.stringify(firebaseUser));
+            //     $window.location.href = ('#!/chat');
+            // }).catch(function (error) {
+            //     alert("Authentication failed");
+            //     console.log("Authentication failed:", error);
+            // });
         }).catch(function(error) {
             alert("Authentication failed");
             console.log("Authentication failed:", error);
@@ -73,22 +90,25 @@ var chatlogController = function ($scope, $rootScope, firebase, $firebaseAuth, $
                 isLogin: true
             }).then(function (user) {
                 alert("add to user node success");
-                firebase.database().ref().child("onlineUsers").child(firebaseUser.uid).set({
-                    uid: firebaseUser.uid,
-                    refreshToken: firebaseUser.refreshToken,
-                    isAnonymous: firebaseUser.isAnonymous,
-                    emailVerified: firebaseUser.emailVerified,
-                    email: firebaseUser.email,
-                    project: firebaseUser.v,
-                    isLogin: true
-                }).then(function (user) {
-                    alert("add to online node success");
-                    localStorage.setItem('loginUser', JSON.stringify(firebaseUser));
-                    $window.location.href = ('#!/chat');
-                }).catch(function (error) {
-                    alert("Authentication failed");
-                    console.log("Authentication failed:", error);
-                });
+                alert("add to online node success");
+                localStorage.setItem('loginUser', JSON.stringify(firebaseUser));
+                $window.location.href = ('#!/chat');
+                // firebase.database().ref().child("onlineUsers").child(firebaseUser.uid).set({
+                //     uid: firebaseUser.uid,
+                //     refreshToken: firebaseUser.refreshToken,
+                //     isAnonymous: firebaseUser.isAnonymous,
+                //     emailVerified: firebaseUser.emailVerified,
+                //     email: firebaseUser.email,
+                //     project: firebaseUser.v,
+                //     isLogin: true
+                // }).then(function (user) {
+                //     alert("add to online node success");
+                //     localStorage.setItem('loginUser', JSON.stringify(firebaseUser));
+                //     $window.location.href = ('#!/chat');
+                // }).catch(function (error) {
+                //     alert("Authentication failed");
+                //     console.log("Authentication failed:", error);
+                // });
             }).catch(function (error) {
                 alert("Authentication failed");
                 console.log("Authentication failed:", error);

@@ -17,7 +17,7 @@ var chatController = function ($scope, $rootScope, firebase, $firebaseArray, $fi
     var selected;
 
     function listUsers() {
-        $scope.onlineUsers = $firebaseArray(firebase.database().ref().child("onlineUsers"));
+        $scope.onlineUsers = $firebaseArray(firebase.database().ref().child("users"));
     }
 
     listUsers();

@@ -12,7 +12,7 @@ var groupChatController = function ($scope, $rootScope, firebase, $firebaseArray
     $scope.loginUser = JSON.parse(localStorage.getItem("loginUser"));
 
     function listUsers() {
-        $scope.onlineUsers = $firebaseArray(firebase.database().ref().child("onlineUsers"));
+        $scope.onlineUsers = $firebaseArray(firebase.database().ref().child("users"));
     }
 
     listUsers();

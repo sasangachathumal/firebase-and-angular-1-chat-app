@@ -1,17 +1,17 @@
 <h2>Chat View</h2>
 <button><a href="#!/group-chat">Group Chat</a></button>
-<button>Log Out</button>
+<button ng-click="logOut()">Log Out</button>
 <div style="float: left; width: 50%; height: 30vh;">
     <h4>Online Users</h4>
     <ul>
         <li ng-if="checkLoginUser($index)" ng-repeat="user in onlineUsers track by $index">
-            <p ng-click="startChat($index)">{{user.email}}</p>
+            <p ng-click="startChat($index)" ng-class="user.isLogin ? 'online' : ''">{{user.email}}</p>
         </li>
     </ul><br>
     <h4>My Chats</h4>
     <ul>
         <li ng-repeat="chat in myChats track by $index">
-            <p> <p ng-click="startChat($index)">{{chat.name}} - {{chat.text}}</p></p>
+            <p ng-click="startChat($index)" ng-class="user.isLogin ? 'online' : ''">{{chat.name}} - {{chat.text}}</p>
         </li>
     </ul>
 </div>

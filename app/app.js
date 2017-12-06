@@ -62,7 +62,7 @@ app.controller('mainController', mainController);
 chatlogController.$inject = ['$scope', '$rootScope', 'firebase', '$firebaseAuth', '$window'];
 app.controller('chatlogController', chatlogController);
 
-chatController.$inject = ['$scope', '$rootScope', 'firebase', '$firebaseArray', '$firebaseAuth'];
+chatController.$inject = ['$scope', '$rootScope', 'firebase', '$firebaseArray', '$window'];
 app.controller('chatController', chatController);
 
 groupChatController.$inject = ['$scope', '$rootScope', 'firebase', '$firebaseArray', '$firebaseAuth'];
