@@ -7,6 +7,12 @@
         <li ng-if="checkLoginUser($index)" ng-repeat="user in onlineUsers track by $index">
             <p ng-click="startChat($index)">{{user.email}}</p>
         </li>
+    </ul><br>
+    <h4>My Chats</h4>
+    <ul>
+        <li ng-repeat="chat in myChats track by $index">
+            <p> <p ng-click="startChat($index)">{{chat.name}} - {{chat.text}}</p></p>
+        </li>
     </ul>
 </div>
 <div style="float: right; width: 50%;">

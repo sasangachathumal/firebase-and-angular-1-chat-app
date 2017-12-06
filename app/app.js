@@ -22,10 +22,6 @@ var angularfire = require('angularfire');
 //Routes
 var routes = require('./app.route');
 
-//Service
-var applicationConstant = require('./util/applicationConstant');
-var sideBarStatics = require('./util/sideBarStatics');
-
 //Controllers
 var mainController = require('./app.controller');
 var chatlogController = require('./chat/chatlogin-controller');
@@ -56,8 +52,6 @@ app.run(function(amMoment) {
 app.value('csvParse',csvParse);
 //constants
 app.constant('moment', require('moment-timezone'));
-app.constant('applicationConstant', applicationConstant);
-app.constant('sideBarStatics', sideBarStatics);
 app.constant('basic', basic);
 
 //Controllers
