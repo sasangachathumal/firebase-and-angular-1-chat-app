@@ -23,6 +23,10 @@ var routes = function ($routeProvider) {
             templateUrl: 'chat/group-chat.html',
             controller: 'groupChatController'
         })
+        .when('/create-group', {
+            templateUrl: 'chat/create-group.html',
+            controller: 'groupController'
+        })
         .otherwise({
             redirectTo: '/404'
         });

@@ -39,5 +39,31 @@ var groupChatController = function ($scope, $rootScope, firebase, $firebaseArray
         $scope.message = "";
     };
 
+    $scope.logOut = function () {
+
+        console.log($scope.loginUser);
+        console.log($scope.loginUser["uid"]);
+
+        firebase.database().ref().child("users").child($scope.loginUser["uid"]).once('value', function (snapshot) {
+            if (snapshot.exists()) {
+                var updates = {};
+                updates['/users/' + $scope.loginUser["uid"] + "/isLogin"] = false;
+                firebase.database().ref().update(updates).then(function (data) {
+                    console.log(data);
+                    alert("add to online node success");
+                    localStorage.clear();
+                    $window.location.href = ('#!/chat-login');
+                }).catch(function (error) {
+                    alert("Authentication failed");
+                    console.log("Authentication failed:", error);
+                });
+            } else {
+                alert("No user found");
+            }
+        });
+
+    };
+
+
 };
 module.exports = groupChatController;

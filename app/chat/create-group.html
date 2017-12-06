@@ -4,26 +4,12 @@
 <div style="float: left; width: 50%; height: 30vh;">
     <h4>Users</h4>
     <ul>
-        <li ng-if="checkLoginUser($index)" ng-repeat="user in onlineUsers track by $index">
+        <li ng-if="checkLoginUser($index)" ng-repeat="user in users track by $index">
             <label ng-class="user.isLogin ? 'online' : ''" for="{{user.uid}}">{{user.email}}</label>
-            <input type="checkbox" id="{{user.uid}}" value="{{$index}}">
+            <input type="checkbox" id="{{user.uid}}" value="{{$index}}" ng-click="selectUsers($index)">
         </li>
     </ul>
 </div>
-<div style="float: right; width: 50%;">
-    <h4>Chat Messages</h4>
-    <p ng-hide="messages.length > 0">No Messages</p>
-
-    <ul ng-show="messages.length > 0" style="">
-        <li ng-repeat="message in messages">
-            <p>{{message.user}} - {{message.text}}</p>
-        </li>
-    </ul>
-    <div style="margin-top: 10px;">
-        <h4>Send Messages</h4>
-        <form ng-submit="addMessage()">
-            <textarea ng-model="message"></textarea><br>
-            <input type="submit" value="Send">
-        </form>
-    </div>
+<div style="float: right; width: 50%; margin-top: 10px;">
+    <button ng-click="createChat()">Create Group</button>
 </div>

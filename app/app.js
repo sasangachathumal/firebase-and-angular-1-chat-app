@@ -27,6 +27,7 @@ var mainController = require('./app.controller');
 var chatlogController = require('./chat/chatlogin-controller');
 var chatController = require('./chat/chat-controller');
 var groupChatController = require('./chat/chat-group-controller');
+var groupController = require('./chat/group-controller');
 
 //application
 var app = angular.module('gradchatApp', [
@@ -67,6 +68,9 @@ app.controller('chatController', chatController);
 
 groupChatController.$inject = ['$scope', '$rootScope', 'firebase', '$firebaseArray', '$firebaseAuth'];
 app.controller('groupChatController', groupChatController);
+
+groupController.$inject = ['$scope', '$rootScope', 'firebase', '$firebaseArray', '$firebaseAuth'];
+app.controller('groupController', groupController);
 
 routes.$inject = ['$routeProvider'];
 app.config(routes);
