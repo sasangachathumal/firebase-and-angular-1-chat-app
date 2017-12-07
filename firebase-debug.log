@@ -1,0 +1,48 @@
+[debug] [2017-12-07T06:27:16.455Z] ----------------------------------------------------------------------
+[debug] [2017-12-07T06:27:16.458Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve -p 8081
+[debug] [2017-12-07T06:27:16.459Z] CLI Version:   3.16.0
+[debug] [2017-12-07T06:27:16.459Z] Platform:      darwin
+[debug] [2017-12-07T06:27:16.459Z] Node Version:  v6.11.3
+[debug] [2017-12-07T06:27:16.460Z] Time:          Thu Dec 07 2017 11:57:16 GMT+0530 (IST)
+[debug] [2017-12-07T06:27:16.460Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-07T06:27:16.480Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-07T06:27:16.480Z] > authorizing via signed-in user
+[debug] [2017-12-07T06:27:16.483Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-12-07T06:27:16.484Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/7OknVe83ySWtKChS8azZrt0A4wbvhs8N-tzrqxLnTs0',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Dec 07 2017 11:57:16 GMT+0530 (IST)
+[debug] [2017-12-07T06:27:16.951Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-07T06:27:17.611Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/angular-chat-app-1c4ce  
+  
+ Thu Dec 07 2017 11:57:17 GMT+0530 (IST)
+[debug] [2017-12-07T06:27:19.027Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-07T06:27:19.028Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/angular-chat-app-1c4ce/tokens  
+  
+ Thu Dec 07 2017 11:57:19 GMT+0530 (IST)
+[debug] [2017-12-07T06:27:20.279Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/sasangachathumal/WebstormProjects/firebase-chat-test'...
+[info] 
+[debug] [2017-12-07T06:27:20.284Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/angular-chat-app-1c4ce  
+  
+ Thu Dec 07 2017 11:57:20 GMT+0530 (IST)
+[debug] [2017-12-07T06:27:21.860Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-07T06:27:21.861Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/974720494215/clients/_:getWebAppConfig  
+  
+ Thu Dec 07 2017 11:57:21 GMT+0530 (IST)
+[debug] [2017-12-07T06:27:22.676Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-07T06:27:22.832Z] TypeError: Cannot read property 'public' of undefined
+    at Server.<anonymous> (/usr/local/lib/node_modules/firebase-tools/lib/serve/hosting.js:34:17)
+    at Server.g (events.js:292:16)
+    at emitNone (events.js:86:13)
+    at Server.emit (events.js:185:7)
+    at emitListeningNT (net.js:1284:10)
+    at _combinedTickCallback (internal/process/next_tick.js:77:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:128:9)
+[error] 
+[error] Error: An unexpected error has occurred.
